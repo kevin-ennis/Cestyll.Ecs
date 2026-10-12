@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- The whole Cestyll.Ecs.Tests suite again, on Entity64. The test files name the layout only
+       through Entity and Registry, so this project compiles them with both re-aimed by the
+       aliases below. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Cestyll.Ecs.Tests</RootNamespace>
+    <AssemblyName>Cestyll.Ecs.Tests64</AssemblyName>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <IsPackable>false</IsPackable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <!-- Test structs give pools a size with fields the tests never set. -->
+    <NoWarn>$(NoWarn);CS0649</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.4" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+    <Using Include="Cestyll.Ecs.Entity64" Alias="Entity" />
+    <Using Include="Cestyll.Ecs.Registry&lt;Cestyll.Ecs.Entity64&gt;" Alias="Registry" />
+    <Using Include="Cestyll.Ecs.Tests.JsonArchive&lt;Cestyll.Ecs.Entity64&gt;" Alias="Archive" />  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Cestyll.Ecs.Tests\**\*.cs" Exclude="..\Cestyll.Ecs.Tests\obj\**;..\Cestyll.Ecs.Tests\bin\**" LinkBase="Shared" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Cestyll.Ecs\Cestyll.Ecs.csproj" />
+  </ItemGroup>
+
+</Project>

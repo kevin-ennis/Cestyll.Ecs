@@ -1,0 +1,8 @@
+<Project>
+
+  <PropertyGroup>
+    <!-- Report .editorconfig code-style rules during 'dotnet build', not just in the IDE. -->
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+</Project>

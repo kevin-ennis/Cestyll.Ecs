@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Cestyll.Ecs</RootNamespace>
+    <AssemblyName>Cestyll.Ecs</AssemblyName>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- Safe managed code only: spans, MemoryMarshal.Cast and Vector256, no unsafe blocks.
+         The one Unsafe.As, in view rows' Get<T>, runs only once typeof(T) matches the field. -->
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+
+    <!-- No reflection anywhere, so trimming and NativeAOT are safe. -->
+    <IsAotCompatible>true</IsAotCompatible>
+
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Cestyll.Ecs</PackageId>
+    <Version>0.7.0</Version>
+    <Authors>Kevin Ennis</Authors>
+    <Copyright>Copyright (c) Kevin Ennis and Contributors</Copyright>
+    <Description>A fast, safe-code sparse-set ECS for .NET with views, groups, command buffers and snapshots.</Description>
+    <PackageTags>ecs;entity-component-system;gamedev;sparse-set</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/kevin-ennis/Cestyll.Ecs</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kevin-ennis/Cestyll.Ecs.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+
+    <!-- Source Link ships with the .NET SDK, so debuggers can step into this repo's sources. -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- For the invariant tests: Slot, Probe, IsCurrent and friends are internal. -->
+    <InternalsVisibleTo Include="Cestyll.Ecs.Tests" />
+    <InternalsVisibleTo Include="Cestyll.Ecs.Tests64" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

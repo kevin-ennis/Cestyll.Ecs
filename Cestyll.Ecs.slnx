@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Cestyll.Ecs.Tests/Cestyll.Ecs.Tests.csproj" />
+    <Project Path="tests/Cestyll.Ecs.Tests64/Cestyll.Ecs.Tests64.csproj" />
+  </Folder>
+  <Project Path="src/Cestyll.Ecs/Cestyll.Ecs.csproj" />
+</Solution>
